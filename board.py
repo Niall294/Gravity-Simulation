@@ -5,8 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib import patches
 
 def showBoard(objects):
-    """Draws all objects as circles with fading trails. Returns True if the window was closed. (objects: list of objects
-    to be drawn, sizeModifier: size of the board)."""
+    """Draws all objects as circles with fading trails. Returns True if the window was closed."""
     #! This function contains the only code written in any part by AI, all other code is my own.
 
     if not hasattr(showBoard, "_s"):

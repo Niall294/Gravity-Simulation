@@ -3,7 +3,7 @@ from config import config
 
 def createOrbit():
     """This function creates an orbit based on the 'chosenConditions' dict. It accounts for all three types of orbits 
-    (eliptical, parobolic, and hyperbolic) and outputs the required velocity vectors for each orbit."""
+    (eliptical, parobolic, and hyperbolic) and sets the values in 'conditionList' using the parameters."""
 
     # Import important functions from gravity_simulation here to prevent a loop of imports.
     from gravity_simulation import getDistAndDir, polarToCartesian
@@ -52,14 +52,14 @@ def createOrbit():
         raise IndexError("Eccentricity must be greater than or equal to 0.")
     
 
-    # Convert the vector from polar to cartesian cordinates to set the velocity vector of the orbiting body.
-    #  Then use conservation of momentum to set the velocity of the center body (which although relatively low, keeps
-    #  the orbit consistent for longer).
-    if d_v > 2 * pi: d_v -= 2 * pi # Fix if exceeds 2pi 
+    # Convert the vector from polar to cartesian cordinates to set the velocity vector of the orbiting body. Then use 
+    #  conservation of momentum to set the velocity of the center body (which although relatively low, keeps the orbit
+    #  consistent for longer).
+    if d_v > 2 * pi: d_v -= 2 * pi # Set to correct range if it exceeds 2pi 
     orbitingVelocity = polarToCartesian(v, d_v)
     centralVelocity = (-1 * orbitingVelocity[0] * orbitingMass / centralMass, -1 * orbitingVelocity[1] * orbitingMass / centralMass)
 
-    # Set the values in config to the ones we calculated.
+    # Set the values in 'conditionList' to the ones we calculated.
     config["conditionList"]["position1"] = orbitingPos
     config["conditionList"]["position2"] = centralPos
     config["conditionList"]["velocity1"] = orbitingVelocity
