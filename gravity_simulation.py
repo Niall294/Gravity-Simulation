@@ -20,7 +20,10 @@ def main():
         m = config["conditionList"][f"mass{i}"]
         objects.append(Object(p, v, m))
 
-    # Run the simulation tick by tick, updating each objects motion vectors each time.
+    # Run the simulation tick by tick, updating each objects motion vectors. This approach to position and velocity being
+    #  updated once per time step has a trade off: it lowers accuracy compared to integration but results in faster speeds
+    #  and simplicity. This means that over long run times the program can become inaccurate, but they aren't noticable 
+    #  until multiple minutes have passed. It allows the program to run in real time without other sacrafices.
     tick = 0
     while tick < 1e10: # Instead of doing 'while True', we set a limit to prevent an infinite loop
         # Update the acceleration vectors for each object using newtons law of gravitation.
