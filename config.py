@@ -49,7 +49,7 @@ class AppConfig(TypedDict):
 config: AppConfig = {
     #! The variables in 'chosenConditions' are the primary settings one will want to modify to run the simulation!
     "chosenConditions": { #? Choose certain starting conditions for the particles in the siulation.
-        "chosenPreset": "", # Choose which dict in 'presets' to use for the simulation (no preset -> "").
+        "chosenPreset": "Sun_Mecury_System", # Choose which dict in 'presets' to use for the simulation (no preset -> "").
         "eccentricity": 0.5, # The eccentricity of the orbit
         "periapsisDistance": 1e5, # The periapsis of the orbit
         "tiltAngle": 3*pi/4, # - radians {0 --> 2pi} - The tilt from the x-axis of the orbit 
